@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CD5CF625-400E-4C8D-99C1-B7D43C9E0498</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CrowdCrunch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>13A7FEF8BD3AD000BC4ECFB438561B67389AC29F</key>
+		<string>https://github.com/ateich/CrowdCrunchOSX.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CrowdCrunch.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>13A7FEF8BD3AD000BC4ECFB438561B67389AC29F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ateich/CrowdCrunchOSX.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>13A7FEF8BD3AD000BC4ECFB438561B67389AC29F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>13A7FEF8BD3AD000BC4ECFB438561B67389AC29F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CrowdCrunch</string>
+		</dict>
+	</array>
+</dict>
+</plist>
