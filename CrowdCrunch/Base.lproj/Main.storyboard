@@ -727,21 +727,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="240" height="310"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="cCu-UE-tY6">
+                            <colorWell enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCu-UE-tY6">
                                 <rect key="frame" x="30" y="20" width="180" height="270"/>
                                 <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FPe-di-SLv">
-                                <rect key="frame" x="99" y="253" width="42" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image" id="93f-UR-c6G">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="sUV-qO-qzj" name="value" keyPath="representedObject.image" id="zr9-My-9Qx"/>
-                                </connections>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wnY-8R-SUY">
                                 <rect key="frame" x="105" y="147" width="31" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Title" id="hju-M1-0wu">
@@ -764,35 +753,48 @@
                                     <binding destination="sUV-qO-qzj" name="value" keyPath="representedObject.text" id="7Hh-oD-Gzi"/>
                                 </connections>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lOC-Aq-w4C">
-                                <rect key="frame" x="83" y="40" width="75" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Subscribed" id="kPa-dz-O3w">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fUA-w4-muS">
+                                <rect key="frame" x="61" y="36" width="118" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="106" id="v8s-xM-FWu"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Donate Power" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vaB-un-Et6">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
+                                </buttonCell>
                                 <connections>
-                                    <binding destination="sUV-qO-qzj" name="value" keyPath="representedObject.subscribed" id="SzZ-Z2-kgq"/>
+                                    <binding destination="sUV-qO-qzj" name="value" keyPath="representedObject.subscribed" id="c83-g5-2EN"/>
                                 </connections>
-                            </textField>
+                            </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bf3-z7-MnA">
+                                <rect key="frame" x="50" y="177" width="140" height="93"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="RjV-Eu-ip7"/>
+                                <connections>
+                                    <binding destination="sUV-qO-qzj" name="valuePath" keyPath="representedObject.image" id="jLD-i4-Qc0">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                            <string key="NSValueTransformerName">PathTransformer</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="cCu-UE-tY6" firstAttribute="leading" secondItem="f0O-h7-huy" secondAttribute="leading" constant="30" id="1wK-WT-Rap"/>
-                            <constraint firstItem="CNz-hR-qih" firstAttribute="centerX" secondItem="lOC-Aq-w4C" secondAttribute="centerX" id="8uU-nQ-zS5"/>
                             <constraint firstItem="wnY-8R-SUY" firstAttribute="centerX" secondItem="CNz-hR-qih" secondAttribute="centerX" id="Cmz-Hy-vX8"/>
-                            <constraint firstItem="FPe-di-SLv" firstAttribute="top" secondItem="f0O-h7-huy" secondAttribute="top" constant="40" id="Ezm-N2-e8B"/>
+                            <constraint firstItem="fUA-w4-muS" firstAttribute="centerX" secondItem="CNz-hR-qih" secondAttribute="centerX" id="OMV-GU-Mlv"/>
                             <constraint firstItem="cCu-UE-tY6" firstAttribute="top" secondItem="f0O-h7-huy" secondAttribute="top" constant="20" id="Rz7-Ak-5ta"/>
-                            <constraint firstItem="lOC-Aq-w4C" firstAttribute="centerX" secondItem="f0O-h7-huy" secondAttribute="centerX" id="cEu-aO-Dsu"/>
+                            <constraint firstAttribute="bottom" secondItem="fUA-w4-muS" secondAttribute="bottom" constant="43" id="asV-hQ-z0k"/>
                             <constraint firstItem="cCu-UE-tY6" firstAttribute="centerX" secondItem="f0O-h7-huy" secondAttribute="centerX" id="dDN-mJ-4CI"/>
-                            <constraint firstAttribute="bottom" secondItem="lOC-Aq-w4C" secondAttribute="bottom" constant="40" id="gEE-f9-jJU"/>
+                            <constraint firstItem="fUA-w4-muS" firstAttribute="top" secondItem="CNz-hR-qih" secondAttribute="bottom" constant="51" id="fw4-Mh-KMF"/>
                             <constraint firstItem="wnY-8R-SUY" firstAttribute="centerY" secondItem="cCu-UE-tY6" secondAttribute="centerY" id="gVX-B2-Jn4"/>
-                            <constraint firstItem="lOC-Aq-w4C" firstAttribute="top" secondItem="CNz-hR-qih" secondAttribute="bottom" constant="58" id="u7c-a5-gTK"/>
-                            <constraint firstItem="FPe-di-SLv" firstAttribute="centerX" secondItem="wnY-8R-SUY" secondAttribute="centerX" id="xNj-So-MVW"/>
+                            <constraint firstItem="fUA-w4-muS" firstAttribute="centerX" secondItem="cCu-UE-tY6" secondAttribute="centerX" id="hLk-NT-Plh"/>
                             <constraint firstAttribute="bottom" secondItem="cCu-UE-tY6" secondAttribute="bottom" constant="20" id="yUv-RO-kt8"/>
                         </constraints>
                     </view>
                 </collectionViewItem>
                 <customObject id="4zj-Rb-jmv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="Tat-Tq-yBl"/>
             </objects>
             <point key="canvasLocation" x="604" y="489"/>
         </scene>
