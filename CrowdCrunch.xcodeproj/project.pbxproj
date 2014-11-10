@@ -13,6 +13,7 @@
 		956905C91A114F5400F152CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956905C81A114F5400F152CE /* Images.xcassets */; };
 		956905CC1A114F5500F152CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956905CA1A114F5500F152CE /* Main.storyboard */; };
 		956905D81A114F5500F152CE /* CrowdCrunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 956905D71A114F5500F152CE /* CrowdCrunchTests.m */; };
+		956905E31A114F9B00F152CE /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 956905E21A114F9B00F152CE /* Project.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		956905D11A114F5500F152CE /* CrowdCrunchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrowdCrunchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		956905D61A114F5500F152CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		956905D71A114F5500F152CE /* CrowdCrunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrowdCrunchTests.m; sourceTree = "<group>"; };
+		956905E11A114F9B00F152CE /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		956905E21A114F9B00F152CE /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 		956905BD1A114F5400F152CE /* CrowdCrunch */ = {
 			isa = PBXGroup;
 			children = (
+				956905E11A114F9B00F152CE /* Project.h */,
+				956905E21A114F9B00F152CE /* Project.m */,
 				956905C01A114F5400F152CE /* AppDelegate.h */,
 				956905C11A114F5400F152CE /* AppDelegate.m */,
 				956905C51A114F5400F152CE /* ViewController.h */,
@@ -218,6 +223,7 @@
 				956905C71A114F5400F152CE /* ViewController.m in Sources */,
 				956905C41A114F5400F152CE /* main.m in Sources */,
 				956905C21A114F5400F152CE /* AppDelegate.m in Sources */,
+				956905E31A114F9B00F152CE /* Project.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

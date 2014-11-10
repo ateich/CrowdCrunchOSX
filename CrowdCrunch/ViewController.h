@@ -8,7 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ViewController : NSViewController
+@interface ViewController : NSViewController {
+    NSMutableArray *projects;
+    IBOutlet NSCollectionView *collectionView;
+}
+
+@property (readwrite, strong, nonatomic) NSMutableArray *projects;
 
 
 @end
