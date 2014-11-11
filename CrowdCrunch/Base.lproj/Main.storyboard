@@ -697,7 +697,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FHc-1A-LZL">
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FHc-1A-LZL">
                                 <rect key="frame" x="315" y="442" width="91" height="32"/>
                                 <buttonCell key="cell" type="push" title="Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mVy-5O-FXF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -707,12 +707,22 @@
                                     <segue destination="J3q-9D-bjB" kind="popover" popoverAnchorView="FHc-1A-LZL" popoverBehavior="t" preferredEdge="maxY" id="1XA-uP-AMA"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CPI-bS-RHR">
+                                <rect key="frame" x="18" y="448" width="124" height="25"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CrowdCrunch" id="zKv-Pv-5Cy">
+                                    <font key="font" size="18" name="HelveticaNeue-Bold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="FHc-1A-LZL" firstAttribute="centerX" secondItem="65G-E3-hte" secondAttribute="centerX" id="BhR-MH-7C1"/>
                             <constraint firstItem="65G-E3-hte" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="HUR-hq-Afp"/>
                             <constraint firstAttribute="trailing" secondItem="65G-E3-hte" secondAttribute="trailing" id="RoS-HD-zRJ"/>
                             <constraint firstAttribute="bottom" secondItem="65G-E3-hte" secondAttribute="bottom" id="Sw1-EC-1CN"/>
                             <constraint firstItem="65G-E3-hte" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="jxC-dN-o7q"/>
+                            <constraint firstItem="65G-E3-hte" firstAttribute="top" secondItem="FHc-1A-LZL" secondAttribute="bottom" constant="9" id="ySP-Zc-dVX"/>
                         </constraints>
                     </view>
                     <connections>
