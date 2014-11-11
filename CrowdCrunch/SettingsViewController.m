@@ -13,13 +13,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Set listeners
+    //Set segmented control listeners
     [runOnBattery setAction:@selector(runOnBatteryChanged:)];
     [runOnlyDuringHours setAction:@selector(runOnlyDuringHoursChanged:)];
     [runDays setAction:@selector(runDaysChanged:)];
-    [stopAtBatteryPercentage setAction:@selector(stopAtBatteryPercentageChanged:)];
-    [runHoursStart setAction:@selector(runHoursStartChanged:)];
-    [runHoursEnd setAction:@selector(runHoursEndChanged:)];
     
 }
 
