@@ -28,11 +28,11 @@
 //    NSLog(@"%@: stringValue == %@", [textField identifier],[textField stringValue]);
     
     if([[textField identifier] isEqual: @"batteryPercentage"]){
-        
+        NSLog(@"1");
     } else if([[textField identifier] isEqual: @"startTime"]){
-        
+        NSLog(@"2");
     } else if([[textField identifier] isEqual: @"endTime"]){
-        
+        NSLog(@"3");
     }
 }
 
