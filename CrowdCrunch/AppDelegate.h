@@ -10,6 +10,8 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+-(void)setSetting:(NSString *)key :(id)val;
+-(id)getSetting:(NSString *)key;
 
 @end
 

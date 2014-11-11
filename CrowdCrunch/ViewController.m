@@ -46,7 +46,7 @@
         NSLog(@"Error parsing JSON: %@", e);
     } else {
         for(NSDictionary *item in jsonArray) {
-            NSLog(@"Item: %@", item);
+//            NSLog(@"Item: %@", item);
             Project * pmTemp = [[Project alloc] init];
             pmTemp.title = [item objectForKey:@"projectname"];
             pmTemp.text = [item objectForKey:@"projectdescription"];

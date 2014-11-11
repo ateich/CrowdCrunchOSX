@@ -8,7 +8,10 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+@interface AppDelegate (){
+    NSString *path;
+    NSMutableDictionary *data;
+}
 
 @end
 
@@ -20,6 +23,33 @@
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+    [data writeToFile: path atomically:YES];
+}
+
+//Set Setting
+-(void)setSetting:(NSString *)key :(id)val{
+    [data setObject:val forKey:key];
+}
+
+//Get Setting
+-(id)getSetting:(NSString *)key{
+    return [data objectForKey:key];
+}
+
+//Get Settings.plist
+-(void)getSettingsPlist{
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    path = [documentsDirectory stringByAppendingPathComponent:@"settings.plist"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    if (![fileManager fileExistsAtPath: path]){
+        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"];
+        [fileManager copyItemAtPath:bundle toPath: path error:&error];
+    }
+    
+    data = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
 }
 
 @end

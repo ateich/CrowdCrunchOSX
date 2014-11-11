@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>run on battery power</key>
+	<false/>
+	<key>stop when battery reaches</key>
+	<integer>0</integer>
+	<key>run only during hours</key>
+	<false/>
+	<key>run hours start</key>
+	<string>12:00am</string>
+	<key>run hours end</key>
+	<string>12:00am</string>
+	<key>run on days</key>
+	<dict>
+		<key>Sunday</key>
+		<true/>
+		<key>Monday</key>
+		<true/>
+		<key>Tuesday</key>
+		<true/>
+		<key>Wednesday</key>
+		<true/>
+		<key>Thursday</key>
+		<true/>
+		<key>Friday</key>
+		<true/>
+		<key>Saturday</key>
+		<true/>
+	</dict>
+</dict>
+</plist>

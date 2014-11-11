@@ -16,6 +16,8 @@
 		956905E31A114F9B00F152CE /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 956905E21A114F9B00F152CE /* Project.m */; };
 		95FB4E311A116DFE000CF995 /* fibre-optic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 95FB4E301A116DFE000CF995 /* fibre-optic.jpg */; };
 		95FB4E331A117363000CF995 /* PathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB4E321A117363000CF995 /* PathTransformer.m */; };
+		95FB4E361A11B567000CF995 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95FB4E351A11B567000CF995 /* settings.plist */; };
+		95FB4E391A11B990000CF995 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FB4E381A11B990000CF995 /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,9 @@
 		95FB4E301A116DFE000CF995 /* fibre-optic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "fibre-optic.jpg"; sourceTree = "<group>"; };
 		95FB4E321A117363000CF995 /* PathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathTransformer.m; sourceTree = "<group>"; };
 		95FB4E341A11736C000CF995 /* PathTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathTransformer.h; sourceTree = "<group>"; };
+		95FB4E351A11B567000CF995 /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
+		95FB4E371A11B97A000CF995 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		95FB4E381A11B990000CF995 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +99,11 @@
 				956905C11A114F5400F152CE /* AppDelegate.m */,
 				956905C51A114F5400F152CE /* ViewController.h */,
 				956905C61A114F5400F152CE /* ViewController.m */,
+				95FB4E351A11B567000CF995 /* settings.plist */,
 				956905C81A114F5400F152CE /* Images.xcassets */,
 				956905CA1A114F5500F152CE /* Main.storyboard */,
+				95FB4E371A11B97A000CF995 /* SettingsViewController.h */,
+				95FB4E381A11B990000CF995 /* SettingsViewController.m */,
 				95FB4E341A11736C000CF995 /* PathTransformer.h */,
 				95FB4E321A117363000CF995 /* PathTransformer.m */,
 				956905BE1A114F5400F152CE /* Supporting Files */,
@@ -218,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				956905C91A114F5400F152CE /* Images.xcassets in Resources */,
+				95FB4E361A11B567000CF995 /* settings.plist in Resources */,
 				95FB4E311A116DFE000CF995 /* fibre-optic.jpg in Resources */,
 				956905CC1A114F5500F152CE /* Main.storyboard in Resources */,
 			);
@@ -240,6 +249,7 @@
 				95FB4E331A117363000CF995 /* PathTransformer.m in Sources */,
 				956905C71A114F5400F152CE /* ViewController.m in Sources */,
 				956905C41A114F5400F152CE /* main.m in Sources */,
+				95FB4E391A11B990000CF995 /* SettingsViewController.m in Sources */,
 				956905C21A114F5400F152CE /* AppDelegate.m in Sources */,
 				956905E31A114F9B00F152CE /* Project.m in Sources */,
 			);
