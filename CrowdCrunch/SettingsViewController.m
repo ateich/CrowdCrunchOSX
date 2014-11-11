@@ -23,6 +23,19 @@
     
 }
 
+- (void)controlTextDidChange:(NSNotification *)notification {
+    NSTextField *textField = [notification object];
+//    NSLog(@"%@: stringValue == %@", [textField identifier],[textField stringValue]);
+    
+    if([[textField identifier] isEqual: @"batteryPercentage"]){
+        
+    } else if([[textField identifier] isEqual: @"startTime"]){
+        
+    } else if([[textField identifier] isEqual: @"endTime"]){
+        
+    }
+}
+
 - (IBAction)runOnBatteryChanged:(id)sender
 {
     long clickedSegment = [sender selectedSegment];
@@ -74,21 +87,6 @@
         default:
             break;
     }
-}
-
-- (IBAction)stopAtBatteryPercentageChanged:(id)sender
-{
-    [stopAtBatteryPercentage stringValue];
-}
-
-- (IBAction)runHoursStartChanged:(id)sender
-{
-    [runHoursStart stringValue];
-}
-
-- (IBAction)runHoursEndChanged:(id)sender
-{
-    [runHoursEnd stringValue];
 }
 
 

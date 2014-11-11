@@ -864,13 +864,16 @@
                                     </segments>
                                 </segmentedCell>
                             </segmentedControl>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frU-DL-gOl">
+                            <textField identifier="batteryPercentage" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frU-DL-gOl">
                                 <rect key="frame" x="424" y="258" width="41" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="50%" drawsBackground="YES" id="hYe-hk-2Ry">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="J3q-9D-bjB" id="txp-co-xte"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TDT-zC-hQK">
                                 <rect key="frame" x="18" y="219" width="222" height="17"/>
@@ -880,7 +883,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZaZ-tf-uPv">
+                            <textField identifier="startTime" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZaZ-tf-uPv">
                                 <rect key="frame" x="317" y="216" width="66" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="12:00am" drawsBackground="YES" id="RM6-qL-QuF">
                                     <font key="font" metaFont="system"/>
@@ -898,7 +901,7 @@
                                     </segments>
                                 </segmentedCell>
                             </segmentedControl>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OLW-md-4dc">
+                            <textField identifier="endTime" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OLW-md-4dc">
                                 <rect key="frame" x="399" y="216" width="66" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="12:00am" drawsBackground="YES" id="fUl-JE-g2B">
                                     <font key="font" metaFont="system"/>
