@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>run on battery power</key>
-	<false/>
+	<integer>0</integer>
 	<key>stop when battery reaches</key>
 	<integer>0</integer>
 	<key>run only during hours</key>
-	<false/>
+	<integer>0</integer>
 	<key>run hours start</key>
 	<string>12:00am</string>
 	<key>run hours end</key>
@@ -15,19 +15,19 @@
 	<key>run on days</key>
 	<dict>
 		<key>Sunday</key>
-		<true/>
+		<integer>1</integer>
 		<key>Monday</key>
-		<true/>
+		<integer>1</integer>
 		<key>Tuesday</key>
-		<true/>
+		<integer>1</integer>
 		<key>Wednesday</key>
-		<true/>
+		<integer>1</integer>
 		<key>Thursday</key>
-		<true/>
+		<integer>1</integer>
 		<key>Friday</key>
-		<true/>
+		<integer>1</integer>
 		<key>Saturday</key>
-		<true/>
+		<integer>1</integer>
 	</dict>
 </dict>
 </plist>
