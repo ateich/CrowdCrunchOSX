@@ -838,10 +838,10 @@
             </objects>
             <point key="canvasLocation" x="604" y="489"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="jTK-2Y-Ssu">
             <objects>
-                <viewController id="J3q-9D-bjB" sceneMemberID="viewController">
+                <viewController id="J3q-9D-bjB" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" id="hdt-dY-hyR">
                         <rect key="frame" x="0.0" y="0.0" width="485" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -947,22 +947,18 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="runDays" destination="5cc-vO-rnf" id="09o-sv-GJS"/>
+                        <outlet property="runHoursEnd" destination="OLW-md-4dc" id="cRP-c3-sxE"/>
+                        <outlet property="runHoursStart" destination="ZaZ-tf-uPv" id="l2n-gK-icF"/>
+                        <outlet property="runOnBattery" destination="ArQ-bu-DG6" id="yTs-jJ-ZOI"/>
+                        <outlet property="runOnlyDuringHours" destination="m0K-Yb-MhT" id="RGV-iA-V6w"/>
+                        <outlet property="stopAtBatteryPercentage" destination="frU-DL-gOl" id="8Kw-aK-2XT"/>
+                    </connections>
                 </viewController>
                 <customObject id="7Ai-yy-KWS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="860"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="MKZ-bz-ACn">
-            <objects>
-                <viewController id="RLd-Ne-kc8" sceneMemberID="viewController">
-                    <view key="view" id="XI1-5P-MAf">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="k5A-2h-xy9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
         <!--View Controller-->
         <scene sceneID="bNt-3q-Ijh">
