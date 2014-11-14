@@ -20,6 +20,12 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
     [self getSettingsPlist];
+    
+    //run a bash script call startDocker in the Resources folder (wherever that is)
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath:@"/bin/bash"];
+    [task setArguments:[NSArray arrayWithObjects:[[NSBundle mainBundle] pathForResource:@"startDocker" ofType:@"sh"], nil]];
+    [task launch];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
