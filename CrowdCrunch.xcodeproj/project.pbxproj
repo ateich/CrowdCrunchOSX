@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		955F022B1A15B51800E8841B /* startDocker.sh in Resources */ = {isa = PBXBuildFile; fileRef = 955F022A1A15703500E8841B /* startDocker.sh */; };
 		956905C21A114F5400F152CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 956905C11A114F5400F152CE /* AppDelegate.m */; };
 		956905C41A114F5400F152CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 956905C31A114F5400F152CE /* main.m */; };
 		956905C71A114F5400F152CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 956905C61A114F5400F152CE /* ViewController.m */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		955F022A1A15703500E8841B /* startDocker.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = startDocker.sh; sourceTree = "<group>"; };
 		956905BB1A114F5400F152CE /* CrowdCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrowdCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		956905BF1A114F5400F152CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		956905C01A114F5400F152CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				956905E21A114F9B00F152CE /* Project.m */,
 				956905C01A114F5400F152CE /* AppDelegate.h */,
 				956905C11A114F5400F152CE /* AppDelegate.m */,
+				955F022A1A15703500E8841B /* startDocker.sh */,
 				956905C51A114F5400F152CE /* ViewController.h */,
 				956905C61A114F5400F152CE /* ViewController.m */,
 				95FB4E351A11B567000CF995 /* settings.plist */,
@@ -225,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				955F022B1A15B51800E8841B /* startDocker.sh in Resources */,
 				956905C91A114F5400F152CE /* Images.xcassets in Resources */,
 				95FB4E361A11B567000CF995 /* settings.plist in Resources */,
 				95FB4E311A116DFE000CF995 /* fibre-optic.jpg in Resources */,
