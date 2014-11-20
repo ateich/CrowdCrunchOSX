@@ -13,5 +13,14 @@
 -(void)setSetting:(NSString *)key :(id)val;
 -(id)getSetting:(NSString *)key;
 
+-(void)setBatteryThreshold:(int)batteryPercentage;
+-(void)setRunOnBattery:(bool)runOnBattery;
+-(void)setBatteryVariables;
+
+-(void)setRunOnlyDuringHours:(bool)runOnlyDuringHours;
+-(void)setRunDuringHoursStart:(NSString*)start End:(NSString*)end;
+
+-(void)setRunOnlyDuringDays:(NSArray *)runDuringDays;
+
 @end
 
