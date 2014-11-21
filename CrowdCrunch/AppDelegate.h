@@ -18,9 +18,10 @@
 -(void)setBatteryVariables;
 
 -(void)setRunOnlyDuringHours:(bool)runOnlyDuringHours;
--(void)setRunDuringHoursStart:(NSString*)start End:(NSString*)end;
+-(void)setRunDuringStartHours:(int)hour Minutes:(int)min;
+-(void)setRunDuringEndHours:(int)hour Minutes:(int)min;
 
--(void)setRunOnlyDuringDays:(NSArray *)runDuringDays;
+-(void)setRunOnlyDuringDays:(bool)runDuringDays;
 
 @end
 

@@ -15,10 +15,22 @@
     NSString *path;
     NSMutableDictionary *data;
     SettingsViewController *settingsVC;
+    
     int batteryThreshold;
     bool run_vm_on_battery;
     bool run_only_during_hours;
+    bool run_only_during_days;
     
+    int run_start_hour;
+    int run_end_hour;
+    
+    int run_start_minutes;
+    int run_end_minutes;
+    
+    NSString *run_start_AMPM;
+    NSString *run_end_AMPM;
+    
+    NSDictionary *run_only_on_these_days;
 }
 
 @end
@@ -43,16 +55,17 @@
     if(!run_vm_on_battery){
         run_vm_on_battery = [[data objectForKey:@"run on battery power"] boolValue];
     }
-    
+}
+
+-(NSArray*)getCurrentTimeInHourMinuteDayOfWeek{
     //Get the current time in hours and minutes (24 hour scale)
     NSString *currentTime = [self getCurrentLocalTime];
     NSRange colonLocation = [currentTime rangeOfString:@":"];
+    
     int hour = [[currentTime substringToIndex:colonLocation.location] intValue];
     int minutes = [[currentTime substringFromIndex:colonLocation.location+1] intValue];
-    NSLog(@"NOW: %i : %i", hour, minutes);
     
-    //Get day of week
-    NSLog(@"Day of Week: %@", [self getDayOfWeek]);
+    return [NSArray arrayWithObjects:[NSNumber numberWithInt:hour], [NSNumber numberWithInt:minutes], [self getDayOfWeek], nil];
 }
 
 -(NSString*)getCurrentLocalTime{
@@ -89,7 +102,6 @@
 
 //Get Setting
 -(id)getSetting:(NSString *)key{
-    NSLog(@"data: %@", data);
     return [data objectForKey:key];
 }
 
@@ -113,8 +125,34 @@
 
 //Battery Status
 -(int)getBatteryPercentage{
-    NSLog(@ "POWER SOURCES: %@", IOPSCopyPowerSourcesInfo());
+//    NSLog(@ "POWER SOURCES: %@", IOPSCopyPowerSourcesInfo());
     return 0;
+}
+
+-(void)setRunOnlyDuringHours:(bool)runOnlyDuringHours{
+    run_only_during_hours = runOnlyDuringHours;
+}
+
+-(void)setRunOnlyDuringDays:(bool)runDuringDays{
+    run_only_during_days = runDuringDays;
+}
+
+-(void)setRunDuringStartHours:(int)hour Minutes:(int)min{
+    if(hour){
+        run_start_hour = hour;
+    }
+    if(min){
+        run_start_minutes = min;
+    }
+}
+
+-(void)setRunDuringEndHours:(int)hour Minutes:(int)min{
+    if(hour){
+        run_end_hour = hour;
+    }
+    if(min){
+        run_end_minutes = min;
+    }
 }
 
 -(void)setBatteryVariables{
@@ -122,34 +160,70 @@
     CFArrayRef sources = IOPSCopyPowerSourcesList(source);
     
     NSDictionary *batteryDetails = CFBridgingRelease(IOPSGetPowerSourceDescription(source, sources));
-    NSLog(@"%@", batteryDetails);
     NSString *powerSource = [[batteryDetails valueForKey:@"Power Source State"] objectAtIndex:0];
     int batteryPercentageRemaining = [[[batteryDetails valueForKey:@"Current Capacity"] objectAtIndex:0] intValue];
     
-    bool runVM = NO;
-    
+    //battery checks
+    bool runVM_battery = NO;
     if(run_vm_on_battery){
-        NSLog(@"OK TO RUN ON BATTERY POWER");
         //RUN VM
-        runVM = YES;
+        runVM_battery = YES;
     } else if([powerSource isEqual: @"AC Power"]){
-        NSLog(@"ON AC POWER");
         //RUN VM
-        runVM = YES;
+        runVM_battery = YES;
     }
     
     if(batteryPercentageRemaining <= batteryThreshold){
-        NSLog(@"BELOW BATTERY THRESHOLD (%i) - DO NOT RUN", batteryThreshold);
         //STOP VM
-        runVM = NO;
+        runVM_battery = NO;
     }
     
-    if(runVM){
+    //Hours checks
+    bool run_vm_hours = NO;
+    NSArray *hourMinDayOfWeek = [self getCurrentTimeInHourMinuteDayOfWeek];
+    int hour = [[hourMinDayOfWeek objectAtIndex:0] intValue];
+    int minutes = [[hourMinDayOfWeek objectAtIndex:1] intValue];
+    
+    if(! run_only_during_hours){
+        run_vm_hours = YES;
+    } else if(hour > run_start_hour && hour < run_end_hour){
+        run_vm_hours = YES;
+    } else if(hour == run_start_hour && minutes > run_start_minutes){
+        run_vm_hours = YES;
+    } else if(hour == run_end_hour && minutes < run_end_minutes){
+        run_vm_hours = YES;
+    }
+    
+    
+    //Date checks
+    bool run_vm_date = NO;
+    NSString *dayOfWeek = [self getDayOfWeek];
+    
+    if(! run_only_during_days){
+        run_vm_date = YES;
+    } else if([[self getSetting:@"run on days"][dayOfWeek] boolValue]){
+        run_vm_date = YES;
+    }
+
+    
+    //Start VM if all of the above pass
+    if(runVM_battery && run_vm_hours && run_vm_date){
         //start VM
         NSLog(@"RUNNING VM");
     } else {
         //stop VM
         NSLog(@"STOPPING VM");
+        
+        //why not?
+        if(!runVM_battery){
+            NSLog(@"BATTERY IS NO GO");
+        }
+        if(!run_vm_hours){
+            NSLog(@"HOURS IS NO GO");
+        }
+        if(!run_vm_date){
+            NSLog(@"DATE IS NO GO");
+        }
     }
 }
 
