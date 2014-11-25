@@ -22,6 +22,12 @@
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Check for Updates" id="jqu-Er-tfX">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="checkForUpdates:" target="1vY-C9-2FD" id="pUL-LM-sZF"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -643,6 +649,11 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="1vY-C9-2FD" customClass="SUUpdater">
+                    <connections>
+                        <outlet property="delegate" destination="jqu-Er-tfX" id="bSl-4k-NJM"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
@@ -672,7 +683,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="730" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOx-7j-x8H">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cOx-7j-x8H">
                                 <rect key="frame" x="0.0" y="0.0" width="730" height="440"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="440" id="N8J-Sp-plZ"/>
@@ -697,10 +708,6 @@
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </clipView>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="440" id="M4h-c4-qMz"/>
-                                    <constraint firstAttribute="width" constant="730" id="mmN-ZR-tVc"/>
-                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="b3x-fm-FiX">
                                     <rect key="frame" x="1" y="144" width="233" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -720,18 +727,26 @@
                                     <segue destination="J3q-9D-bjB" kind="popover" popoverAnchorView="FHc-1A-LZL" popoverBehavior="t" preferredEdge="maxY" id="Tw0-2A-4ib"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l3L-EV-YCy">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l3L-EV-YCy">
                                 <rect key="frame" x="20" y="397" width="125" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="iMl-vK-vU8"/>
+                                </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logoText" id="DyY-x3-qxc"/>
                             </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="65G-E3-hte" secondAttribute="bottom" id="9Lj-v1-JgL"/>
-                            <constraint firstItem="65G-E3-hte" firstAttribute="centerX" secondItem="FHc-1A-LZL" secondAttribute="centerX" constant="4.5" id="EJs-l5-Ov3"/>
-                            <constraint firstAttribute="trailing" secondItem="65G-E3-hte" secondAttribute="trailing" id="Iex-PZ-xga"/>
-                            <constraint firstItem="65G-E3-hte" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="Pnb-IN-klu"/>
-                            <constraint firstItem="65G-E3-hte" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="gsY-38-FYr"/>
-                            <constraint firstItem="65G-E3-hte" firstAttribute="top" secondItem="FHc-1A-LZL" secondAttribute="bottom" constant="9" id="p8w-QY-Hoc"/>
+                            <constraint firstItem="65G-E3-hte" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="77z-Ax-c5U"/>
+                            <constraint firstItem="65G-E3-hte" firstAttribute="top" secondItem="FHc-1A-LZL" secondAttribute="bottom" constant="9" id="BVJ-zQ-wab"/>
+                            <constraint firstItem="l3L-EV-YCy" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="T9X-JC-OGv"/>
+                            <constraint firstItem="FHc-1A-LZL" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="321" id="f29-4z-VGm"/>
+                            <constraint firstItem="l3L-EV-YCy" firstAttribute="centerY" secondItem="FHc-1A-LZL" secondAttribute="centerY" id="mUt-9Z-9Ic"/>
+                            <constraint firstItem="65G-E3-hte" firstAttribute="leading" secondItem="cOx-7j-x8H" secondAttribute="leading" id="pLu-lF-ErN"/>
+                            <constraint firstItem="65G-E3-hte" firstAttribute="bottom" secondItem="cOx-7j-x8H" secondAttribute="bottom" id="pjd-W2-ShT"/>
+                            <constraint firstItem="65G-E3-hte" firstAttribute="top" secondItem="cOx-7j-x8H" secondAttribute="top" id="pnK-ts-UwP"/>
+                            <constraint firstAttribute="bottom" secondItem="65G-E3-hte" secondAttribute="bottom" id="rqT-u2-XWk"/>
+                            <constraint firstItem="l3L-EV-YCy" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="-42" id="sFC-Fr-vS4"/>
+                            <constraint firstItem="65G-E3-hte" firstAttribute="trailing" secondItem="cOx-7j-x8H" secondAttribute="trailing" id="yUF-jw-5Ha"/>
                         </constraints>
                     </view>
                     <connections>
@@ -907,7 +922,7 @@
                                 </buttonCell>
                             </button>
                             <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="td0-N0-3yT">
-                                <rect key="frame" x="21" y="148" width="443" height="5"/>
+                                <rect key="frame" x="21" y="148" width="443" height="4"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
@@ -1158,6 +1173,6 @@
     <resources>
         <image name="fibre-optic" width="478.5" height="279"/>
         <image name="logoBg" width="1442" height="882"/>
-        <image name="logoText" width="425" height="50"/>
+        <image name="logoText" width="415" height="50"/>
     </resources>
 </document>
