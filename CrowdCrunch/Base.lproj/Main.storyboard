@@ -838,8 +838,8 @@
                                         </buttonCell>
                                         <connections>
                                             <action selector="donatePowerClicked:" target="sUV-qO-qzj" id="Thd-qF-pOo"/>
-                                            <binding destination="sUV-qO-qzj" name="value" keyPath="representedObject.subscribed" id="lIF-ae-xZL"/>
                                             <binding destination="sUV-qO-qzj" name="alternateTitle" keyPath="representedObject.title" id="e9n-CF-UoS"/>
+                                            <binding destination="sUV-qO-qzj" name="value" keyPath="representedObject.subscribed" id="dMX-lH-rJc"/>
                                         </connections>
                                     </button>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IJc-3W-WDY">

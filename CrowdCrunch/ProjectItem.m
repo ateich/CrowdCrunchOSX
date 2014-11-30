@@ -8,9 +8,11 @@
 
 #import "ProjectItem.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
 
 @interface ProjectItem (){
-    
+    AppDelegate *appDelegate;
+    NSMutableDictionary *projectsSubscribedTo;
 }
 
 @end;
@@ -75,7 +77,7 @@
 
 -(void)awakeFromNib {
     NSLog(@"LOADED FROM STORYBOARD");
-    NSLog(@"HALP! %@",[self representedObject]);
+//    NSLog(@"HALP! %@",[self representedObject]);
     
 }
 
@@ -92,9 +94,34 @@
 
 - (IBAction)donatePowerClicked:(id)sender{
 //    NSLog(@"CLICKED %@", [_titleTextField stringValue]);
+    appDelegate = [[NSApplication sharedApplication] delegate];
+    projectsSubscribedTo = [appDelegate getSetting:@"subscribedToProject"];
+    
+    NSString *titleWithoutSpaces = [[sender alternateTitle] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    if(!projectsSubscribedTo){
+        projectsSubscribedTo = [[NSMutableDictionary alloc] init];
+        NSLog(@"IS IT STILL NULL? %@", projectsSubscribedTo);
+    }
     
     NSLog(@"CLICKED %@", sender);
     NSLog(@"CLICKED: %@",[sender alternateTitle]);
+    
+    NSLog(@"DICT IS: %@", projectsSubscribedTo);
+    NSString *subscribedTo = [projectsSubscribedTo objectForKey:titleWithoutSpaces];
+    if(!subscribedTo){
+        NSLog(@"SUBSCRIBED_TO IS NULL");
+        [projectsSubscribedTo setValue:@"NO" forKey:titleWithoutSpaces];
+    } else if([sender state] == NSOnState){
+        NSLog(@"SUBSCRIBED_TO IS YES");
+        [projectsSubscribedTo setValue:@"YES" forKey:titleWithoutSpaces];
+    } else {
+        NSLog(@"SUBSCRIBED_TO IS NO");
+        [projectsSubscribedTo setValue:@"NO" forKey:titleWithoutSpaces];
+    }
+    
+    [appDelegate setSetting:@"subscribedToProject" :projectsSubscribedTo];
+    [appDelegate setBatteryVariables];
 }
 
 - (void)viewDidLoad {

@@ -39,5 +39,7 @@
 		<key>Saturday</key>
 		<integer>1</integer>
 	</dict>
+	<key>subscribedToProject</key>
+	<dict/>
 </dict>
 </plist>

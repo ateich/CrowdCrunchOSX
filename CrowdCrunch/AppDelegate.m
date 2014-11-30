@@ -41,9 +41,26 @@
 @implementation AppDelegate
 
 -(void)startVM{
+    //get parameters
+    NSString *projectArgs;
+    
+    NSDictionary *projectSubscriptionStatus = [self getSetting:@"subscribedToProject"];
+    for(id key in projectSubscriptionStatus){
+        NSLog(@"TEST 123: %@", [projectSubscriptionStatus objectForKey:key]);
+        if([[projectSubscriptionStatus objectForKey:key] isEqualToString:@"YES"]){
+            NSLog(@"TEST TEST TEST TEST");
+            if(projectArgs){
+                projectArgs = [NSString stringWithFormat:@"%@;%@:%@", projectArgs, key, @"YES"];
+            } else {
+                projectArgs = [NSString stringWithFormat:@"%@:%@", key, @"YES"];
+            }
+        }
+    }
+    NSLog(@"PROJECT ARGS: %@", projectArgs);
+    
     startVM = [[NSTask alloc] init];
     [startVM setLaunchPath:@"/bin/bash"];
-    [startVM setArguments:[NSArray arrayWithObjects:[[NSBundle mainBundle] pathForResource:@"startVM" ofType:@"sh"], nil]];
+    [startVM setArguments:[NSArray arrayWithObjects:[[NSBundle mainBundle] pathForResource:@"startVM" ofType:@"sh"], projectArgs, nil]];
     [startVM launch];
 }
 
@@ -54,9 +71,12 @@
     [stopVM launch];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+-(void)applicationWillFinishLaunching:(NSNotification *)notification{
     [self getSettingsPlist];
+    NSLog(@"DATA TEST: %@", data);
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
     //run a bash script call startDocker in the Resources folder (wherever that is)
 //    NSTask *task = [[NSTask alloc] init];
@@ -132,11 +152,17 @@
 
 //Set Setting
 -(void)setSetting:(NSString *)key :(id)val{
+    if(!data){
+        [self getSettingsPlist];
+    }
     [data setObject:val forKey:key];
 }
 
 //Get Setting
 -(id)getSetting:(NSString *)key{
+    if(!data){
+        [self getSettingsPlist];
+    }
     return [data objectForKey:key];
 }
 
@@ -191,6 +217,7 @@
 }
 
 -(void)setBatteryVariables{
+    NSLog(@"SET BATTERY VARIABLES");
     CFTypeRef source = IOPSCopyPowerSourcesInfo();
     CFArrayRef sources = IOPSCopyPowerSourcesList(source);
     

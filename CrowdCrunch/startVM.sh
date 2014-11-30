@@ -15,7 +15,8 @@ cd /.CrowdCrunch
 
 #can't stop, won't stop
 vagrant up
-SHELL_ARGS="run 'a:1;b:2'" vagrant provision
+#echo "run '$1'"
+SHELL_ARGS="run '$1'" vagrant provision
 
 #PATH_TO_DOCKER="~/Documents"
 #print variable on a screen

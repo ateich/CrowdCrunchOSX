@@ -9,8 +9,12 @@
 #import "ViewController.h"
 #import "Project.h"
 #import "PathTransformer.h"
+#import "AppDelegate.h"
 
-@implementation ViewController
+@implementation ViewController{
+    NSMutableDictionary *projectsSubscribedTo;
+    AppDelegate *appDelegate;
+}
 @synthesize projects;
 
 - (void)viewDidLoad {
@@ -24,6 +28,13 @@
     id transformer = [[PathTransformer alloc] init];
     [NSValueTransformer setValueTransformer:transformer forName:@"PathTransformer"];
 
+    appDelegate = [[NSApplication sharedApplication] delegate];
+    projectsSubscribedTo = [appDelegate getSetting:@"subscribedToProject"];
+    if(!projectsSubscribedTo){
+        NSLog(@"PST IS NULL!");
+        projectsSubscribedTo = [[NSMutableDictionary alloc] init];
+    }
+    
     [self getProjects];
 }
 
@@ -56,12 +67,39 @@
             pmTemp.text = [item objectForKey:@"projectdescription"];
             pmTemp.image = [item objectForKey:@"projectimage"]; //CHANGE LATER
             
+            
+            NSString *titleWithoutSpaces = [pmTemp.title stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
             //Fallback Image
             if(!pmTemp.image){
                 pmTemp.image = @"fibre-optic.jpg";
             }
             
-            pmTemp.subscribed = @"NO";
+            //Is the user donating power to this cause?
+            //if subscribedToProject[pmTemp.title] == null
+            //  add pmTemp.title to subscribedToProject dictionary as NO
+            //if subscribedToProject[pmTemp.title]
+            //  pmTemp.subscribed = YES
+            //  pmTemp.subscribed = NO
+            
+            if(![projectsSubscribedTo objectForKey:pmTemp.title]){
+                NSLog(@"Missing project: %@", pmTemp.title);
+                [projectsSubscribedTo setValue:@"NO" forKey:pmTemp.title];
+                NSLog(@"PST: %@", projectsSubscribedTo);
+                [appDelegate setSetting:@"subscribedToProject" :projectsSubscribedTo];
+            }
+            
+            if([[projectsSubscribedTo objectForKey:titleWithoutSpaces] isEqualToString:@"YES"]){
+                pmTemp.subscribed = @"YES";
+            } else {
+                pmTemp.subscribed = @"NO";
+            }
+            
+            
+            
+            
+//            pmTemp.subscribed = @"YES";
+//            pmTemp.subscribed = @"NO";
             [newProjects addObject:pmTemp];
         }
     }
