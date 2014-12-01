@@ -233,22 +233,30 @@
     CFArrayRef sources = IOPSCopyPowerSourcesList(source);
     
     NSDictionary *batteryDetails = CFBridgingRelease(IOPSGetPowerSourceDescription(source, sources));
-    NSString *powerSource = [[batteryDetails valueForKey:@"Power Source State"] objectAtIndex:0];
-    int batteryPercentageRemaining = [[[batteryDetails valueForKey:@"Current Capacity"] objectAtIndex:0] intValue];
     
-    //battery checks
     bool runVM_battery = NO;
-    if(run_vm_on_battery){
-        //RUN VM
-        runVM_battery = YES;
-    } else if([powerSource isEqual: @"AC Power"]){
-        //RUN VM
-        runVM_battery = YES;
-    }
     
-    if(batteryPercentageRemaining <= batteryThreshold){
-        //STOP VM
-        runVM_battery = NO;
+    //Check if this computer has more than one power source (i.e. is a laptop)
+    if([batteryDetails valueForKey:@"Power Source State"] && [[batteryDetails valueForKey:@"Power Source State"] isKindOfClass:[NSArray class]]){
+        NSString *powerSource = [[batteryDetails valueForKey:@"Power Source State"] objectAtIndex:0];
+        int batteryPercentageRemaining = [[[batteryDetails valueForKey:@"Current Capacity"] objectAtIndex:0] intValue];
+    
+        //battery checks
+        NSLog(@"battery checking: %i > %i", batteryPercentageRemaining, batteryThreshold);
+        if(batteryPercentageRemaining > batteryThreshold){
+            //RUN VM
+            NSLog(@"SHOULD RUN ON BATTERY");
+            runVM_battery = YES;
+        } else if([powerSource isEqual: @"AC Power"]){
+            NSLog(@"LAPTOP PLUGGED IN");
+            //RUN VM
+            runVM_battery = YES;
+        }
+    
+    } else {
+        //iMac, no battery
+        NSLog(@"iMac -- no battery");
+        runVM_battery = YES;
     }
     
     //Hours checks
