@@ -58,13 +58,21 @@
     }
     NSLog(@"PROJECT ARGS: %@", projectArgs);
     
+    
+    NSArray *testArray = [NSArray arrayWithObjects:[[NSBundle mainBundle] pathForResource:@"startVM" ofType:@"sh"],projectArgs, nil];
+    NSLog(@"TEST ARRAY: %@", [testArray description]);
+    
     startVM = [[NSTask alloc] init];
     [startVM setLaunchPath:@"/bin/bash"];
     [startVM setArguments:[NSArray arrayWithObjects:[[NSBundle mainBundle] pathForResource:@"startVM" ofType:@"sh"], projectArgs, nil]];
+    
+    NSLog(@"Launch Path: %@", [startVM launchPath]);
+    NSLog(@"Arguments: %@", [startVM arguments]);
     [startVM launch];
 }
 
 -(void)stopVM{
+    
     stopVM = [[NSTask alloc] init];
     [stopVM setLaunchPath:@"/bin/bash"];
     [stopVM setArguments:[NSArray arrayWithObjects:[[NSBundle mainBundle] pathForResource:@"stopVM" ofType:@"sh"], nil]];
@@ -217,6 +225,9 @@
 }
 
 -(void)setBatteryVariables{
+    //IMAC DOES NOT HAVE A BATTERY
+    //CAUSES AN ARRAY INDEX OUT OF BOUNDS EXCEPTION
+    
     NSLog(@"SET BATTERY VARIABLES");
     CFTypeRef source = IOPSCopyPowerSourcesInfo();
     CFArrayRef sources = IOPSCopyPowerSourcesList(source);
